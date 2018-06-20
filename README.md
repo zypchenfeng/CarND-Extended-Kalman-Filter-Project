@@ -4,6 +4,8 @@
 3. `cmake .. && make`
 4. run `./ExtendedKF`
 5. Start the Simulator and Start
+6. Also a copy of the running result video is in the Folder EKF_Project_Video.mp4
+
 
 #### Problems and solutions when prepare the Simulator
 1. Install Ubuntu for Windows

@@ -1,3 +1,10 @@
+### How to run the code:
+1. `mkdir build`
+2. `cd build `
+3. `cmake .. && make`
+4. run `./ExtendedKF`
+5. Start the Simulator and Start
+
 #### Problems and solutions when prepare the Simulator
 1. Install Ubuntu for Windows
 2. Install cmake, openssl, and libssl-dev
@@ -7,9 +14,21 @@
   sudo apt-get install libssl-dev
   ```
 3. In the repository run `./install-ubuntu.sh` to install the _uWS_
-3. Use `g++ -std=c++11 test.cpp -o test` in Ubuntu window CML to compile, otherwise always prompt "fatal error: uWS/uWS.h: No such file or directory"
-4. Build at the top level of the project repository `mkdir build` && `cd build`
+4. Use `g++ -std=c++11 test.cpp -o test` in Ubuntu window CML to compile, otherwise always prompt "fatal error: uWS/uWS.h: No such file or directory"
+5. Build at the top level of the project repository `mkdir build` && `cd build`
 from ``/build cmake ..`` && `make`
+
+#### Tricks in the code:
+1. Need to do angle shift for radar in `KalmanFilter::UpdateEKF`
+    ```
+    if( y(1) > PI_ ) y(1) -= 2*PI_;
+    if( y(1) < -PI_ ) y(1) += 2*PI_;
+    ```
+2. Need to shift the angle into -pi to pi
+  ```
+  if( z(1)> PI_ ) z(1) = z(1)-2*PI_;
+  if( z(1)< -PI_ ) z(1) = z(1)+2*PI_;
+  ```
 
 #### Files in the Github src Folder
 The files you need to work with are in the src folder of the github repository.
